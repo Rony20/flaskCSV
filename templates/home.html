@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h3 class="mt-3">Welcome to CSV Uploader!</h3>
+        {% if not session.get('is_user', False) %}
+            <a class="btn btn-primary" href="{{ url_for('login') }}">Login</a>
+        {% endif %}
+{% endblock content %}

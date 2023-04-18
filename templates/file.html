@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h3 class="mt-3">{{ filename }}</h3>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    <table class="table align-middle table-bordered mt-2">
+      <thead>
+        <tr class="table-light">
+            {% for column in columns %}
+                <th scope="col">{{ column }}</th>
+            {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in row_data %}
+            <tr>
+                {% for entry in row %}
+                    <td>{{ entry }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}

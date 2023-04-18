@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h3 class="mt-3">Dashboard</h3>
+    <div class="mt-3 mb-3">
+        <form action = "/upload" method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <div class="col-sm-3">
+                    <input type="file" name="file" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <input type="submit" class="btn btn-primary" value="Upload File">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <table class="table align-middle table-bordered mt-2">
+      <thead>
+        <tr class="table-light">
+          <th scope="col">S.No</th>
+          <th scope="col">File</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for index, file in files %}
+            <tr>
+               <td>{{ index+1 }}</td>
+                <td>{{ file }}</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-success" href="{{ url_for('download', filename=file) }}"
+                       role="button">Download</a>
+                    <a class="btn btn-sm btn-outline-primary" href="{{ url_for('view_file', filename=file) }}"
+                       role="button">Open</a>
+                </td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+{% endblock content %}
